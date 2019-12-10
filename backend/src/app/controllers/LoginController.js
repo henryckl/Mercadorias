@@ -13,16 +13,14 @@ module.exports = {
         throw new Error({ error: "e-mail nao registrado" });
       }
       const isPasswordMatch = await bcrypt.compare(password, user.password);
-      console.log(isPasswordMatch);
       if (!isPasswordMatch) {
         throw new Error({ error: "senha invalida" });
       }
 
       const token = await jwt.sign({ _id: user._id }, process.env.JWT_KEY);
       user.tokens = user.tokens.concat({ token });
-      console.log(token);
       await user.save();
-      res.json({ user, token });
+      res.status(200).json({ user, token });
     } catch (error) {
       res.status(400).send(error);
     }
