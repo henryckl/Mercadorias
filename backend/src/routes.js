@@ -8,9 +8,9 @@ const adm_auth = require("./app/middlewares/adm_auth");
 const routes = new Router();
 
 routes.post("/", LoginController.store);
+
 routes.post("/register", RegisterController.store);
 routes.post("/me", adm_auth, async (req, res) => {
-  console.log("me");
   res.json(req.user);
 });
 
