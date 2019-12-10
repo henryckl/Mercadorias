@@ -13,6 +13,7 @@ routes.post("/", LoginController.store);
 
 routes.post("/register", RegisterController.store);
 routes.post("/products", adm_auth, ProductController.store);
+routes.get("/home", ProductController.index);
 routes.post("/me", adm_auth, async (req, res) => {
   res.json(req.user);
 });
