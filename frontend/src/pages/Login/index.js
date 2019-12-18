@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import api from "../../services/api";
 import { login } from "../../services/auth";
+import { Logo, Container, Content, Form } from "./style";
 
 export default function Login({ history }) {
   const [email, setEmail] = useState("");
@@ -24,29 +25,32 @@ export default function Login({ history }) {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">E-MAIL</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Seu e-mail"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">SENHA</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Sua Senha"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <button className="btn" type="submit">
-          Entrar
-        </button>
-        {error ? <p>{error}</p> : null}
-      </form>
-    </>
+    <Container>
+      <Content>
+        <Logo>HApp</Logo>
+        <Form onSubmit={handleSubmit}>
+          <label htmlFor="email">E-MAIL</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Seu e-mail"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+          <label htmlFor="password">SENHA</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Sua Senha"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+          <button className="btn" type="submit">
+            Entrar
+          </button>
+          {error ? <p>{error}</p> : null}
+        </Form>
+      </Content>
+    </Container>
   );
 }
