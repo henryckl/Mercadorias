@@ -30,12 +30,12 @@ export default function Home({ history }) {
 
   async function fetchProducts() {
     const result = await api.get("/products");
-    setProdutos([...produtos, result.data]);
+    setProdutos(...produtos, result.data);
   }
 
   useEffect(() => {
     fetchProducts();
-  });
+  }, []);
 
   return (
     <>
