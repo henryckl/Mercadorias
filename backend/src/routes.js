@@ -14,6 +14,7 @@ routes.post("/", LoginController.store);
 
 routes.post("/register", RegisterController.store);
 routes.post("/products", adm_auth, ProductController.store);
+routes.get("/products", adm_auth, ProductController.index);
 routes.post("/email", EmailController.send);
 routes.get("/home", ProductController.index);
 routes.post("/me", adm_auth, async (req, res) => {
